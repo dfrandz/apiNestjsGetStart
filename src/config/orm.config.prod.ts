@@ -9,11 +9,11 @@ export default registerAs(
   'orm.config',
   (): TypeOrmModuleOptions => ({
     type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: 'frandz',
-    database: 'goaltracker-db',
+    host: process.env.POSTGRES_HOST,
+    port: parseInt(process.env.POSTGRES_PORT) || 5432,
+    username: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DATABASE,
     entities: [Goal, Student, User], //[__dirname + '/**/*.entity{.ts,.js}']
     synchronize: false, // Disable this always in production
   }),
